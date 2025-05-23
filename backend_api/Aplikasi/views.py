@@ -37,7 +37,29 @@ def register_user(request):
         return Response({"message": "User registered successfully"}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class SaveDiagnosisView(APIView):
+    def post(self, request):
+        user_id = request.data.get('user_id')
+        symptoms = request.data.get('symptoms')
+        disease = request.data.get('disease')
 
+        if not user_id or not isinstance(symptoms, list) or not disease:
+            return Response({'error': 'user_id, symptoms (list), and disease are required.'}, status=400)
+        user_id = request.data.get("user_id")
+
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return Response({"error": "User not found"}, status=404)
+
+        history = MedicalHistory.objects.create(
+            user=user,
+            symptoms=symptoms,
+            diagnosis=disease
+        )
+        serializer = MedicalHistorySerializer(history)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
 # @api_view(['POST'])
 # @permission_classes([IsAuthenticated])
 # def predict_disease(request):

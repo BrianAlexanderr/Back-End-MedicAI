@@ -24,4 +24,5 @@ urlpatterns = [
     path('register/', register_user),
     path('symptoms/', SymptomList.as_view()),
     path('facilities/', HealthcareFacilityList.as_view(), name='facility-list'),
+    path('save-diagnosis/', SaveDiagnosisView.as_view(), name='save-diagnosis'),
 ]

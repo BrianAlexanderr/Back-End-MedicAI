@@ -44,3 +44,8 @@ class PredictionHistorySerializer(serializers.ModelSerializer):
             'explanation',
             'created_at',
         ]
+
+class MedicalHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MedicalHistory
+        fields = '_all_'

@@ -29,3 +29,15 @@ class PredictionHistory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     disease = models.ForeignKey(Disease, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+class MedicalHistory(models.Model):
+    history_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    diagnosis = models.CharField(max_length=255)
+    doctor_notes = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    symptoms = ArrayField(models.CharField(max_length=255))
+
+    class Meta:
+        db_table = 'medicalhistory'
+        managed = False
