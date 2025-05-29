@@ -18,7 +18,7 @@ class HealthcareFacilityList(APIView):
         try:
             lat = float(request.GET.get("lat"))
             lon = float(request.GET.get("lon"))
-            radius = float(request.GET.get("radius", 10))  # default 10 km
+            radius = float(request.GET.get("radius", 10))
         except (TypeError, ValueError):
             return Response({"error": "lat, lon, and radius are required and must be numbers"}, status=400)
 
