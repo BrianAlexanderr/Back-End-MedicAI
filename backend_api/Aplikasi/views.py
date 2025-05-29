@@ -23,7 +23,7 @@ class HealthcareFacilityList(APIView):
             return Response({"error": "lat, lon, and radius are required and must be numbers"}, status=400)
 
         def haversine(lat1, lon1, lat2, lon2):
-            R = 6371  # Earth radius in KM
+            R = 6371
             d_lat = radians(lat2 - lat1)
             d_lon = radians(lon2 - lon1)
             a = sin(d_lat/2)**2 + cos(radians(lat1)) * cos(radians(lat2)) * sin(d_lon/2)**2
