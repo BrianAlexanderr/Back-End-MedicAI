@@ -28,9 +28,12 @@ class SymptomSerializer(serializers.ModelSerializer):
 
 
 class HealthcareFacilitySerializer(serializers.ModelSerializer):
+    distance = serializers.SerializerMethodField()
     class Meta:
         model = HealthcareFacility
         fields = '__all__'
+    def get_distance(self, obj):
+        return getattr(obj, 'distance', None)
 
 class PredictionHistorySerializer(serializers.ModelSerializer):
     symptoms = SymptomSerializer(many=True, read_only=True)
