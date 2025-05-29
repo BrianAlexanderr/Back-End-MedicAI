@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from .models import Symptom, PredictionHistory, Disease
 from rest_framework.views import APIView
+from math import radians, sin, cos, sqrt, atan2
 from .serializers import SymptomSerializer, UserRegisterSerializer, HealthcareFacility, HealthcareFacilitySerializer
 
 class SymptomList(APIView):
@@ -14,8 +15,33 @@ class SymptomList(APIView):
 
 class HealthcareFacilityList(APIView):
     def get(self, request):
-        facilities = HealthcareFacility.objects.all().order_by('facility_id')
-        serializer = HealthcareFacilitySerializer(facilities, many=True)
+        try:
+            lat = float(request.GET.get("lat"))
+            lon = float(request.GET.get("lon"))
+            radius = float(request.GET.get("radius", 10))  # default 10 km
+        except (TypeError, ValueError):
+            return Response({"error": "lat, lon, and radius are required and must be numbers"}, status=400)
+
+        def haversine(lat1, lon1, lat2, lon2):
+            R = 6371  # Earth radius in KM
+            d_lat = radians(lat2 - lat1)
+            d_lon = radians(lon2 - lon1)
+            a = sin(d_lat/2)**2 + cos(radians(lat1)) * cos(radians(lat2)) * sin(d_lon/2)**2
+            c = 2 * atan2(sqrt(a), sqrt(1 - a))
+            return R * c
+
+        facilities = HealthcareFacility.objects.all()
+        nearby = []
+
+        for f in facilities:
+            distance = haversine(lat, lon, float(f.latitude), float(f.longitude))
+            if distance <= radius:
+                f.distance = round(distance, 2)
+                nearby.append(f)
+
+        nearby.sort(key=lambda x: x.distance)
+
+        serializer = HealthcareFacilitySerializer(nearby, many=True)
         return Response(serializer.data)
 
 @api_view(['GET'])
