@@ -1,0 +1,8 @@
+Django>=5.2
+djangorestframework
+djangorestframework-simplejwt
+python-dotenv
+dj-database-url
+numpy
+pandas
+scikit-learn
