@@ -80,18 +80,6 @@ ai_health_backend/
 
 ---
 
-## 🥪 Contoh API Endpoint
-
-| Endpoint         | Method | Deskripsi                    |
-| ---------------- | ------ | ---------------------------- |
-| `/api/login/`    | POST   | Login pengguna               |
-| `/api/register/` | POST   | Registrasi pengguna          |
-| `/api/diagnose/` | POST   | Kirim gejala untuk diagnosis |
-| `/api/history/`  | GET    | Lihat riwayat diagnosis      |
-| `/api/doctors/`  | GET    | Daftar dokter                |
-
----
-
 ## 🧠 Model AI
 
 Model AI telah dilatih menggunakan `scikit-learn` (atau TensorFlow/PyTorch). Model dimuat di backend dan digunakan saat endpoint `/api/diagnose/` dipanggil.
@@ -100,16 +88,12 @@ Model file: `model/diagnosis_model.pkl` *(contoh)*
 
 ---
 
-## 📄 Lisensi
-
-Proyek ini dilisensikan di bawah MIT License.
-
----
-
 ## 👩‍💼 Kontributor
 
-* 🧑 Nama Kamu - Backend & AI Developer
-* 👩 Nama Rekan - Frontend Developer (opsional)
+* 🧑 Brian Alexander
+* 🧑 Kinsley Reynard Tanjung
+* 🧑 Kenneth Nathanael Yuwono
+* 🧑 Nathaniel Wijaya
 
 ---
 
