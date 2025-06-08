@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from backend_api.Aplikasi.views import register_user, SymptomList, HealthcareFacilityList
+from backend_api.Aplikasi.views import register_user, SymptomList, HealthcareFacilityList, SaveDiagnosisView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
