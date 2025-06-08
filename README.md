@@ -33,8 +33,8 @@ Ini adalah backend aplikasi berbasis Django yang mengintegrasikan fitur AI/ML un
 1. **Clone repository**:
 
    ```bash
-   git clone https://github.com/username/ai-health-backend.git
-   cd ai-health-backend
+   git clone https://github.com/username/Back-End-MedicAI.git
+   cd Back-End-MedicAI
    ```
 
 2. **Buat virtual environment dan aktifkan**:
