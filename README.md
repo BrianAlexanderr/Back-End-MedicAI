@@ -28,21 +28,6 @@ Ini adalah backend aplikasi berbasis Django yang mengintegrasikan fitur AI/ML un
 
 ---
 
-## 📂 Struktur Folder
-
-```
-ai_health_backend/
-├── diagnose_ai/         # Aplikasi Django untuk fitur diagnosis AI
-├── users/               # Aplikasi Django untuk login/register
-├── core/                # Konfigurasi utama Django
-├── db.sqlite3           # (Contoh) Database SQLite
-├── manage.py
-├── requirements.txt
-└── README.md
-```
-
----
-
 ## ⚙️ Instalasi dan Menjalankan Server
 
 1. **Clone repository**:
